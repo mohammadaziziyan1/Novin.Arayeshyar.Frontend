@@ -1,0 +1,37 @@
+#backgroundlogin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 0;
+  height: 60vh;
+  width: 100vw;
+  background-image: url(../../../assets/pic/2.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+#menuheader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1;
+  height: 12vh;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+#logo {
+  height: 12vh;
+  width: 15vw;
+  background-image: url(../../../assets/pic/9.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+#logo:last-of-type {
+  margin-left: auto;
+}

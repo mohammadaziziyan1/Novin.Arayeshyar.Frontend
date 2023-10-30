@@ -1,0 +1,65 @@
+.login-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.login-full-width {
+  width: 100%;
+}
+
+#divmobile {
+  text-align: center;
+}
+#divpass {
+  text-align: center;
+  margin-top: 5px;
+}
+#formpass {
+  width: 250px;
+}
+#formnumber {
+  width: 250px;
+  margin-top: 10px;
+}
+#btnlogin {
+  width: 120px;
+  height: 50px;
+  font-size: large;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+#faramoshiramz {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+#btnregister {
+  width: 120px;
+  height: 50px;
+  font-size: large;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+#imglogin {
+  background-image: url(../../../assets/pic/5.png);
+  background-repeat: no-repeat;
+
+  background-position: center center;
+  background-size: cover;
+  height: 160px;
+}
+#imglogin2 {
+  background-image: url(../../../assets/pic/6.jpg);
+  background-repeat: no-repeat;
+
+  background-position: center center;
+  background-size: cover;
+  height: 30px;
+}
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}

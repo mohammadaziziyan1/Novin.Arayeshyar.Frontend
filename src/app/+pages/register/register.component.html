@@ -1,0 +1,307 @@
+<mat-stepper dir="rtl" labelPosition="bottom" #stepper>
+  <mat-step [stepControl]="registerform">
+    <form [formGroup]="registerform">
+      <ng-template matStepLabel>اطلاعات حساب کاربری</ng-template>
+
+      <mat-form-field
+        appearance="outline"
+        id="formnumber"
+        class="login-full-width"
+      >
+        <mat-label>شماره موبایل</mat-label>
+        <input
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+          id="inputmobile"
+          maxlength="11"
+          type="tel"
+          formControlName="mobile"
+          matInput
+          placeholder="09XX-XXX-XXXX"
+          pattern="^[0-9]{4}[0-9]{3}[0-9]{4}"
+        />
+        <mat-hint>شماره موبایل خود را وار کنید</mat-hint>
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+
+      <div>
+        <mat-form-field
+          style="margin-left: 10px"
+          appearance="outline"
+          dir="rtl"
+          id="formpass"
+          class="login-full-width"
+        >
+          <mat-label>کلمه عبور</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            id="inputpassword"
+          />
+          <mat-hint>کلمه ورود خود را وارد کنید</mat-hint>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          dir="rtl"
+          id="confirmformpass"
+          class="login-full-width"
+        >
+          <mat-label>تکرار کلمه عبور</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="confirmpassword"
+            id="inputpassword"
+          />
+          <mat-hint>تکرار کلمه ورود خود را وارد کنید</mat-hint>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <section class="example-section">
+          <p>
+            <mat-checkbox formControlName="type1">خدمات دهنده</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="type2">خدمات گیرنده</mat-checkbox>
+          </p>
+        </section>
+        <mat-label>آرایشگاه:</mat-label>
+        <mat-chip-listbox formControlName="gender" aria-label="Fish selection">
+          <mat-chip-option value="true" name="gender1">مردانه</mat-chip-option>
+          <mat-chip-option value="false" name="gender1" color="accent" selected
+            >زنانه</mat-chip-option
+          >
+        </mat-chip-listbox>
+      </div>
+
+      <mat-form-field
+        *ngIf="this.registerform.controls['type1'].value"
+        style="width: 250px"
+        appearance="outline"
+        dir="rtl"
+        class="login-full-width"
+      >
+        <mat-label>نام آرایشگاه </mat-label>
+        <input type="text" matInput formControlName="title" />
+
+        <mat-hint> نام آرایشگاه خود را وارد کنید</mat-hint>
+      </mat-form-field>
+      <div>
+        <button
+          style="margin-top: 10px"
+          mat-raised-button
+          matStepperNext
+          color="warn"
+        >
+          بعدی
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="registerform">
+    <form [formGroup]="registerform">
+      <ng-template matStepLabel>اطلاعات شخصی</ng-template>
+
+      <div formGroupName="personal">
+        <div>
+          <mat-form-field
+            style="margin-left: 10px"
+            appearance="outline"
+            class="login-full-width"
+          >
+            <mat-label>کد ملی</mat-label>
+            <input
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              maxlength="10"
+              minlength="10"
+              type="text"
+              formControlName="nationalcode"
+              matInput
+            />
+            <mat-hint> کد ملی خود را وار کنید</mat-hint>
+            <mat-icon matSuffix>natioalcode</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input
+              formControlName="Dateofbirth"
+              matInput
+              [matDatepicker]="picker"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field
+            style="margin-left: 10px"
+            appearance="outline"
+            class="login-full-width"
+          >
+            <mat-label>نام </mat-label>
+            <input type="text" formControlName="firstname" matInput />
+            <mat-hint> نام خود را وار کنید</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="login-full-width">
+            <mat-label>نام خانوادگی</mat-label>
+            <input type="text" formControlName="lastname" matInput />
+            <mat-hint>نام خانوادگی خود را وار کنید</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <p>
+          <mat-form-field class="addrees-full-width">
+            <mat-label>آدرس کامل</mat-label>
+            <textarea matInput placeholder=""></textarea>
+          </mat-form-field>
+        </p>
+
+        <mat-form-field style="margin-left: 10px" class="addrees-full-width">
+          <mat-label>استان</mat-label>
+          <input formControlName="state" matInput placeholder="" />
+        </mat-form-field>
+        <mat-form-field style="margin-left: 10px" class="addrees-full-width">
+          <mat-label>شهر</mat-label>
+          <input formControlName="city" matInput placeholder="" />
+        </mat-form-field>
+        <mat-form-field class="addrees-full-width">
+          <mat-label>خیابان</mat-label>
+          <input formControlName="street" matInput placeholder="" />
+        </mat-form-field>
+        <mat-form-field style="margin-left: 10px" class="addrees-full-width">
+          <mat-label>کوچه</mat-label>
+          <input formControlName="alley" matInput placeholder="" />
+        </mat-form-field>
+        <mat-form-field style="margin-left: 10px" class="addrees-full-width">
+          <mat-label>پلاک</mat-label>
+          <input
+            formControlName="plaque"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            matInput
+            placeholder=""
+          />
+        </mat-form-field>
+        <mat-form-field class="addrees-full-width">
+          <mat-label>کد پستی</mat-label>
+          <input
+            formControlName="postalcode"
+            matInput
+            maxlength="10"
+            placeholder=""
+            value=""
+          />
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button
+          style="margin-left: 5px"
+          mat-raised-button
+          matStepperPrevious
+          color="primary"
+        >
+          بازگشت
+        </button>
+        <button mat-raised-button matStepperNext color="warn">بعدی</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>ثبت نهایی</ng-template>
+
+    <div>
+      <div>
+        <p>شرایط و قوانین</p>
+
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> قوانین عمومی </mat-panel-title>
+              <mat-panel-description> </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+              توجه داشته باشید کلیه اصول و رویه های آرایشیار منطبق با قوانین
+              جمهوری اسلامی ایران و قانون تجارت الکترونیک وقانون خمایت از حقوق
+              مصرف کننده است و متعاقبا کاربر نیز موظف به رعایت قوانین مرتبط با
+              کاربر است .در صورتی که در قوانین رویه ها و سرویس های آرایشیار
+              تغییراتی در آینده ایجاد شود در همین صفحه منتشر و بروزرسانی می شود
+              و شما توافق میکنید که استفاده مستمر شما از سایت به معنی پذیرش هر
+              گونه تغییر است.
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                تعریف مشتری یا کاربر خدمات گیرنده
+              </mat-panel-title>
+              <mat-panel-description> </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+              مشتری یا کاربر به شخصی گفته می شود که با ثبت اطلاعات کاربری خود که
+              در فرم ثبت نام درج کرده است به ثبت خدمات اقدام نماید.
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                تعریف خدمات دهنده و شرایط کاری
+              </mat-panel-title>
+              <mat-panel-description> </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div id="divsabt" [formGroup]="sabt">
+        <mat-checkbox style="margin-left: 10px" formControlName="rules"
+          >شزایط را میپذیرم</mat-checkbox
+        >
+
+        <button
+          [disabled]="!this.sabt.controls['rules'].value"
+          mat-raised-button
+          color="primary"
+          style="width: 115px; margin-left: 5px"
+        >
+          ثبت
+        </button>
+      </div>
+      <div style="margin-top: 5px">
+        <button
+          style="margin-left: 5px"
+          mat-raised-button
+          matStepperPrevious
+          color="warn"
+        >
+          بازگشت
+        </button>
+        <button mat-raised-button (click)="stepper.reset()" color="warn">
+          بازگشت به صفحه نخست
+        </button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>

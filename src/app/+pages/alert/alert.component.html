@@ -1,0 +1,118 @@
+<div id="imglogin">
+  <div mat-dialog-actions>
+    <button style="width: 5px" mat-button mat-dialog-close>X</button>
+  </div>
+</div>
+
+<h1
+  style="font-size: x-large; font-weight: 900; text-align: center"
+  mat-dialog-title
+>
+  ورود و ثبت نام
+</h1>
+<div mat-dialog-content>
+  <div id="divmobile">
+    <form dir="rtl" class="login-form">
+      <mat-form-field
+        appearance="outline"
+        id="formnumber"
+        class="login-full-width"
+      >
+        <mat-label>شماره موبایل</mat-label>
+        <input
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+          id="inputmobile"
+          maxlength="11"
+          minlength="11"
+          type="tel"
+          [formControl]="mobileFormControl"
+          matInput
+          placeholder="09XX-XXX-XXXX"
+          pattern="^09[0-9]{9}$"
+        />
+        <mat-hint *ngIf="!mobileFormControl.valid"
+          >شماره موبایل خود را وار کنید</mat-hint
+        >
+        <mat-error *ngIf="mobileFormControl.hasError('pattern') && mobileFormControl.dirty && mobileFormControl.touched">
+          لطفا شماره موبایل خود را درست وارد کنید
+        </mat-error>
+        <mat-error *ngIf="mobileFormControl.hasError('required')">
+          <strong>شماره موبایل باید حتما وارد شود</strong>
+        </mat-error>
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </form>
+  </div>
+  <div id="divpass">
+    <form dir="rtl" class="login-form">
+      <mat-form-field
+        appearance="outline"
+        dir="rtl"
+        id="formpass"
+        class="login-full-width"
+      >
+        <mat-label>کلمه عبور</mat-label>
+        <input
+          type="password"
+          minlength="8"
+          matInput
+          [formControl]="passwordFormControl"
+          [errorStateMatcher]="matcher"
+          id="inputpassword"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+        />
+        <mat-hint *ngIf="!passwordFormControl.valid"
+          >کلمه ورود خود را وارد کنید</mat-hint
+        >
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error   *ngIf="passwordFormControl.hasError('pattern')">
+          لطفا کلمه عبور را درست وارد کنید
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          <strong>کلمه عبور باید حتما وارد شود</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div style="text-align: center; margin-top: 5px; margin-bottom: 5px">
+    <mat-radio-group [formControl]="type1formcontrol">
+      <mat-radio-button name="khadamat" value="true"
+        >خدمات دهنده</mat-radio-button
+      >
+      <mat-radio-button name="khadamat" value="false"
+        >خدمات گیرنده</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div style="text-align: center">
+    <button
+    (click)="check()"
+      [disabled]="!mobileFormControl.valid || !passwordFormControl.valid || type1formcontrol.value==''"
+      name="btnvorod"
+      id="btnlogin"
+      mat-raised-button
+      color="warn"
+    >
+      <mat-icon matSuffix>login</mat-icon>
+      ورود
+    </button>
+    <button
+      (click)="openDialog('1000ms', '1500ms')"
+      id="btnregister"
+      mat-raised-button
+      color="primary"
+      mat-button
+      mat-dialog-close
+    >
+      <mat-icon matSuffix>note</mat-icon>
+      ثبت نام
+    </button>
+  </div>
+  <div style="text-align: center; padding: 10px">
+    <a id="faramoshiramz" href="">فراموشی کلمه عبور</a>
+  </div>
+  <div></div>
+</div>
+<div id="imglogin2"></div>
